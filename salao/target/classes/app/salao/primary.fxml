@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="700.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.salao.PrimaryController">
+   <children>
+      <TabPane VBox.vgrow="ALWAYS">
+        <tabs>
+          <Tab text="Cadastrar Novo Cliente">
+            <content>
+              <VBox alignment="TOP_LEFT" spacing="15.0">
+                  <padding>
+                      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                  </padding>
+                  <Label text="Cadastro de Clientes">
+                      <font>
+                          <Font name="System Bold" size="24.0" />
+                      </font>
+                      <VBox.margin>
+                          <Insets bottom="20.0" />
+                      </VBox.margin>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                      <children>
+                          <Label minWidth="110.0" text="Nome Completo:" />
+                          <TextField fx:id="nomeTextField" HBox.hgrow="ALWAYS" promptText="Digite o nome do cliente" />
+                      </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                      <children>
+                          <Label minWidth="110.0" text="Data Nascimento:" />
+                          <DatePicker fx:id="dataNascimentoPicker" prefWidth="200.0" promptText="dd/MM/yyyy" />
+                      </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                      <children>
+                          <Label minWidth="110.0" text="Rede Social:" />
+                          <TextField fx:id="redeSocialTextField" HBox.hgrow="ALWAYS" promptText="Ex: @instagram_do_cliente" />
+                      </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                      <children>
+                          <Label minWidth="110.0" text="Telefone:" />
+                          <TextField fx:id="telefoneTextField" HBox.hgrow="ALWAYS" promptText="(XX) XXXXX-XXXX" />
+                      </children>
+                  </HBox>
+                  <Button fx:id="adicionarButton" onAction="#handleAdicionarCliente" prefHeight="35.0" text="Adicionar Cliente">
+                      <font>
+                          <Font size="14.0" />
+                      </font>
+                      <VBox.margin>
+                          <Insets top="20.0" />
+                      </VBox.margin>
+                  </Button>
+              </VBox>
+            </content>
+          </Tab>
+          <Tab text="Clientes e Atendimentos">
+            <content>
+              <VBox alignment="TOP_LEFT" spacing="15.0">
+                  <padding>
+                      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                  </padding>
+                  <Label text="Clientes Cadastrados:">
+                      <font>
+                          <Font name="System Bold" size="18.0" />
+                      </font>
+                      <VBox.margin>
+                          <Insets bottom="10.0" />
+                      </VBox.margin>
+                  </Label>
+                  <TableView fx:id="clientesTableView" prefHeight="180.0" VBox.vgrow="SOMETIMES">
+                      <columns>
+                          <TableColumn fx:id="colunaNome" prefWidth="150.0" text="Nome" />
+                          <TableColumn fx:id="colunaTelefone" prefWidth="100.0" text="Telefone" />
+                          <TableColumn fx:id="colunaDataNascimento" prefWidth="120.0" text="Data Nascimento" />
+                          <TableColumn fx:id="colunaRedeSocial" prefWidth="150.0" text="Rede Social" />
+                      </columns>
+                      <columnResizePolicy>
+                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                      </columnResizePolicy>
+                  </TableView>
+                  <Label fx:id="atendimentosHeaderLabel" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Atendimentos do Cliente: (Selecione um cliente na tabela acima)">
+                      <VBox.margin>
+                          <Insets bottom="10.0" top="30.0" />
+                      </VBox.margin>
+                  </Label>
+                  <Label text="Registrar Novo Atendimento:">
+                      <font>
+                          <Font name="System Italic" size="14.0" />
+                      </font>
+                      <VBox.margin>
+                          <Insets bottom="5.0" top="5.0" />
+                      </VBox.margin>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                      <children>
+                          <Label minWidth="150.0" text="Descrição Procedimento:" />
+                          <TextField fx:id="descricaoProcedimentoTextField" HBox.hgrow="ALWAYS" promptText="Ex: Corte Feminino Avançado" />
+                      </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                      <children>
+                          <Label minWidth="150.0" text="Valor Cobrado (R$):" />
+                          <TextField fx:id="valorCobradoTextField" prefWidth="100.0" promptText="Ex: 75.50" />
+                      </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                      <children>
+                          <Label minWidth="150.0" text="Data do Atendimento:" />
+                          <DatePicker fx:id="dataAtendimentoPicker" prefWidth="180.0" promptText="dd/MM/yyyy" />
+                      </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                      <children>
+                          <CheckBox fx:id="pagoCheckBox" text="Atendimento Pago?" />
+                      </children>
+                      <VBox.margin>
+                          <Insets bottom="10.0" />
+                      </VBox.margin>
+                  </HBox>
+                  <Button fx:id="salvarAtendimentoButton" onAction="#handleSalvarAtendimento" prefHeight="30.0" text="Salvar Atendimento" />
+                  <Label text="Histórico de Atendimentos do Cliente:">
+                      <font>
+                          <Font name="System Bold" size="16.0" />
+                      </font>
+                      <VBox.margin>
+                          <Insets bottom="5.0" top="20.0" />
+                      </VBox.margin>
+                  </Label>
+                  <TableView fx:id="atendimentosTableView" prefHeight="180.0" VBox.vgrow="SOMETIMES">
+                      <columns>
+                          <TableColumn fx:id="colunaDescricaoProcedimento" prefWidth="200.0" text="Procedimento" />
+                          <TableColumn fx:id="colunaValorCobrado" prefWidth="100.0" text="Valor (R$)" />
+                          <TableColumn fx:id="colunaDataAtendimento" prefWidth="120.0" text="Data" />
+                          <TableColumn fx:id="colunaPago" prefWidth="80.0" text="Pago?" />
+                      </columns>
+                      <columnResizePolicy>
+                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                      </columnResizePolicy>
+                  </TableView>
+              </VBox>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</VBox>
